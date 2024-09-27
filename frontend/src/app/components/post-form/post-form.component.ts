@@ -10,11 +10,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./post-form.component.css']
 })
 export class PostFormComponent implements OnInit {
-  post: Post = {
-    title: '', content: '',
-    id: 0
-  }; // Inicializa o post
+  post: Post = { title: '', content: '', id: 0 };
   faCoffee = faCoffee;
+  successMessage: string | null = null; // Permite que successMessage seja string ou null
 
   constructor(
     private postService: PostService,
@@ -34,12 +32,25 @@ export class PostFormComponent implements OnInit {
   onSubmit(): void {
     if (this.post.id) {
       this.postService.updatePost(this.post.id, this.post).subscribe(() => {
-        this.router.navigate(['/posts']);
+        this.showSuccessMessage('Nota atualizada com sucesso!');
+        setTimeout(() => {
+          this.router.navigate(['/posts']);
+        }, 2000); // Redireciona após 3 segundos
       });
     } else {
       this.postService.createPost(this.post).subscribe(() => {
-        this.router.navigate(['/posts']);
+        this.showSuccessMessage('Nota criada com sucesso!');
+        setTimeout(() => {
+          this.router.navigate(['/posts']);
+        }, 2000); // Redireciona após 3 segundos
       });
     }
+  }  
+
+  showSuccessMessage(message: string): void {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = null; // Remove a mensagem após 3 segundos
+    }, 3000);
   }
 }

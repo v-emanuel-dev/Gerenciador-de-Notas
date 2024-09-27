@@ -1,4 +1,9 @@
 <div class="container mt-4">
+  <!-- Mensagem de Sucesso -->
+  <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
+    {{ successMessage }}
+  </div>
+
   <div class="text-center">
     <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
   </div>
@@ -18,26 +23,26 @@
         [routerLink]="['/posts', post.id]" 
         class="text-decoration-none text-dark d-flex justify-content-between align-items-center"
         style="width: 100%;">
-        
+
         <div class="post-title flex-grow-1">
           <span class="font-weight-bold" [title]="post.title">{{ post.title | slice:0:25 }}<span *ngIf="post.title.length > 30">...</span></span>
         </div>
-
-        <div class="d-flex justify-content-end mt-2">
-          <a 
-            [routerLink]="['/posts/edit', post.id]" 
-            class="btn btn-warning btn-sm me-2" 
-            title="Editar">Editar</a>
-          <button 
-            (click)="deletePost(post.id)" 
-            class="btn btn-danger btn-sm me-2" 
-            title="Excluir">Excluir</button>
-          <button 
-            (click)="exportAsTxt(post)" 
-            class="btn btn-dark btn-sm" 
-            title="Exportar">Exportar</button>
-        </div>
       </a>
+
+      <div class="d-flex justify-content-end mt-2">
+        <a 
+          [routerLink]="['/posts/edit', post.id]" 
+          class="btn btn-warning btn-sm me-2" 
+          title="Editar">Editar</a>
+        <button 
+          (click)="deletePost(post.id)" 
+          class="btn btn-danger btn-sm me-2" 
+          title="Excluir">Excluir</button>
+        <button 
+          (click)="exportAsTxt(post)" 
+          class="btn btn-dark btn-sm" 
+          title="Exportar">Exportar</button>
+      </div>
     </li>
   </ul>
 </div>

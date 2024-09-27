@@ -5,11 +5,12 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { PostFormComponent } from './components/post-form/post-form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/posts', pathMatch: 'full' },
   { path: 'posts', component: PostListComponent },
   { path: 'posts/new', component: PostFormComponent },
+  { path: 'posts/edit/:id', component: PostFormComponent },
   { path: 'posts/:id', component: PostDetailComponent },
-  { path: 'posts/edit/:id', component: PostFormComponent }
+  { path: '', redirectTo: '/posts', pathMatch: 'full' },  // Redirecionamento padrão
+  { path: '**', redirectTo: '/posts' }  // Para rotas não encontradas
 ];
 
 @NgModule({

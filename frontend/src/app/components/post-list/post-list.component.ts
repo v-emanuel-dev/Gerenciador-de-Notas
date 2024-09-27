@@ -14,13 +14,13 @@ export class PostListComponent implements OnInit {
   posts: Post[] = [];
   faCoffee = faCoffee;
   successMessage: string | null = null;
+  errorMessage: string | null = null; // Para mensagens de erro
   filteredPosts: Post[] = [];
   searchTerm: string = '';
-  isDarkTheme: boolean = false;
+  noteContent: string = ''; // Campo para armazenar o conteúdo da nota
 
   constructor(private postService: PostService, private router: Router) {
     const savedTheme = localStorage.getItem('isDarkTheme');
-    this.isDarkTheme = savedTheme ? JSON.parse(savedTheme) : false; // Se não houver, padrão será claro
    }
 
   ngOnInit(): void {
@@ -38,6 +38,28 @@ export class PostListComponent implements OnInit {
     this.postService.deletePost(id).subscribe(() => {
       this.loadPosts(); // Recarrega a lista de posts após a exclusão
       this.showSuccessMessage('Nota excluída com sucesso!');
+    });
+  }
+
+  createPost(): void {
+    // Validação: verifica se o conteúdo da nota não está vazio
+    if (!this.noteContent.trim()) {
+      this.errorMessage = 'O conteúdo da nota não pode estar vazio!'; // Mensagem de erro
+      return; // Impede a criação da nota
+    }
+
+    // Crie o objeto newPost com todas as propriedades necessárias
+    const newPost: Post = {
+      id: 0, // Ou você pode omitir este campo se o backend gerar o ID
+      title: this.noteContent,
+      content: this.noteContent // Se você tiver um campo de conteúdo
+    };
+
+    this.postService.createPost(newPost).subscribe(() => {
+      this.loadPosts(); // Recarrega a lista de posts após a criação
+      this.noteContent = ''; // Limpa o campo de input
+      this.successMessage = 'Nota criada com sucesso!'; // Mensagem de sucesso
+      this.errorMessage = null; // Limpa a mensagem de erro
     });
   }
 
@@ -64,14 +86,4 @@ export class PostListComponent implements OnInit {
       this.filteredPosts = this.posts; // Se a pesquisa estiver vazia, mostra todos os posts
     }
   }
-
-  toggleTheme(): void {
-    this.isDarkTheme = !this.isDarkTheme;
-    if (this.isDarkTheme) {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
-    }
-  }
-
 }

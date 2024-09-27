@@ -16,8 +16,12 @@ export class PostListComponent implements OnInit {
   successMessage: string | null = null;
   filteredPosts: Post[] = [];
   searchTerm: string = '';
+  isDarkTheme: boolean = false;
 
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(private postService: PostService, private router: Router) {
+    const savedTheme = localStorage.getItem('isDarkTheme');
+    this.isDarkTheme = savedTheme ? JSON.parse(savedTheme) : false; // Se não houver, padrão será claro
+   }
 
   ngOnInit(): void {
     this.loadPosts();
@@ -32,7 +36,7 @@ export class PostListComponent implements OnInit {
 
   deletePost(id: number): void {
     this.postService.deletePost(id).subscribe(() => {
-      this.posts = this.posts.filter(post => post.id !== id);
+      this.loadPosts(); // Recarrega a lista de posts após a exclusão
       this.showSuccessMessage('Nota excluída com sucesso!');
     });
   }
@@ -60,4 +64,14 @@ export class PostListComponent implements OnInit {
       this.filteredPosts = this.posts; // Se a pesquisa estiver vazia, mostra todos os posts
     }
   }
+
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    if (this.isDarkTheme) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }
+
 }

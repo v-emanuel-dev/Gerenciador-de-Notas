@@ -32,3 +32,13 @@
 .btn-dark:hover {
   background-color: #343a40; /* Cor de fundo ao passar o mouse para o botão de exportar */
 }
+
+.btn-light {
+  border: none; /* Remove a borda padrão */
+  background-color: transparent; /* Fundo transparente */
+  cursor: pointer; /* Muda o cursor ao passar o mouse */
+}
+
+.btn-light:hover {
+  opacity: 0.8; /* Leve efeito de hover */
+}

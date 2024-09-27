@@ -1,4 +1,9 @@
 <div class="container mt-4">
+
+  <button (click)="toggleTheme()" class="btn btn-secondary btn-sm">
+    {{ isDarkTheme ? 'Modo Claro' : 'Modo Escuro' }}
+  </button>
+
   <!-- Mensagem de Sucesso -->
   <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
     {{ successMessage }}

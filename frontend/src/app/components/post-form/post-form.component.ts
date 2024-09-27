@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-form',
@@ -12,6 +12,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class PostFormComponent implements OnInit {
   post: Post = { title: '', content: '', id: 0 };
   faCoffee = faCoffee;
+  faSun = faSun;
+  faMoon = faMoon;
+
   successMessage: string | null = null; // Permite que successMessage seja string ou null
 
   constructor(

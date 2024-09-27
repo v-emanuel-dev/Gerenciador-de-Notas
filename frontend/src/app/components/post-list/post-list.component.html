@@ -11,16 +11,27 @@
   <div class="mb-3">
     <a routerLink="/posts/new" class="btn btn-success">Nova Nota</a>
   </div>
-  
+
+  <!-- Barra de Pesquisa -->
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Pesquisar..."
+      [(ngModel)]="searchTerm"
+      (input)="filterPosts()"
+    />
+  </div>
+
   <!-- Mensagem quando a lista de notas estiver vazia -->
-  <div *ngIf="!posts || posts.length === 0" class="alert alert-info text-center" role="alert">
+  <div *ngIf="!filteredPosts || filteredPosts.length === 0" class="alert alert-info text-center" role="alert">
     Adicione uma nota
   </div>
 
   <ul class="list-group">
-    <li *ngFor="let post of posts" class="list-group-item border rounded shadow-sm mb-2">
-      <a 
-        [routerLink]="['/posts', post.id]" 
+    <li *ngFor="let post of filteredPosts" class="list-group-item border rounded shadow-sm mb-2">
+      <a
+        [routerLink]="['/posts', post.id]"
         class="text-decoration-none text-dark d-flex justify-content-between align-items-center"
         style="width: 100%;">
 
@@ -30,17 +41,17 @@
       </a>
 
       <div class="d-flex justify-content-end mt-2">
-        <a 
-          [routerLink]="['/posts/edit', post.id]" 
-          class="btn btn-warning btn-sm me-2" 
+        <a
+          [routerLink]="['/posts/edit', post.id]"
+          class="btn btn-warning btn-sm me-2"
           title="Editar">Editar</a>
-        <button 
-          (click)="deletePost(post.id)" 
-          class="btn btn-danger btn-sm me-2" 
+        <button
+          (click)="deletePost(post.id)"
+          class="btn btn-danger btn-sm me-2"
           title="Excluir">Excluir</button>
-        <button 
-          (click)="exportAsTxt(post)" 
-          class="btn btn-dark btn-sm" 
+        <button
+          (click)="exportAsTxt(post)"
+          class="btn btn-dark btn-sm"
           title="Exportar">Exportar</button>
       </div>
     </li>

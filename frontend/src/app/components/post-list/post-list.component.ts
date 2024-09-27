@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
 import { saveAs } from 'file-saver';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';  
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,8 +12,10 @@ import { Router } from '@angular/router';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
-  faCoffee = faCoffee;  
-  successMessage: string | null = null; // Variável para armazenar a mensagem de sucesso
+  faCoffee = faCoffee;
+  successMessage: string | null = null;
+  filteredPosts: Post[] = [];
+  searchTerm: string = '';
 
   constructor(private postService: PostService, private router: Router) { }
 
@@ -24,6 +26,7 @@ export class PostListComponent implements OnInit {
   loadPosts(): void {
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts.reverse(); // Inverte a ordem dos posts
+      this.filteredPosts = this.posts; // Inicializa filteredPosts com todos os posts
     });
   }
 
@@ -46,5 +49,15 @@ export class PostListComponent implements OnInit {
     setTimeout(() => {
       this.successMessage = '';  // Limpa a mensagem após 3 segundos
     }, 2000);  // Exibe a mensagem por 3 segundos
+  }
+
+  filterPosts(): void {
+    if (this.searchTerm) {
+      this.filteredPosts = this.posts.filter(post =>
+        post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredPosts = this.posts; // Se a pesquisa estiver vazia, mostra todos os posts
+    }
   }
 }

@@ -35,17 +35,17 @@ export class PostFormComponent implements OnInit {
         this.showSuccessMessage('Nota atualizada com sucesso!');
         setTimeout(() => {
           this.router.navigate(['/posts']);
-        }, 2000); // Redireciona após 3 segundos
+        }, 1000); // Redireciona após 3 segundos
       });
     } else {
       this.postService.createPost(this.post).subscribe(() => {
         this.showSuccessMessage('Nota criada com sucesso!');
         setTimeout(() => {
           this.router.navigate(['/posts']);
-        }, 2000); // Redireciona após 3 segundos
+        }, 1000); // Redireciona após 3 segundos
       });
     }
-  }  
+  }
 
   showSuccessMessage(message: string): void {
     this.successMessage = message;

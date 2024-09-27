@@ -48,7 +48,7 @@ export class PostListComponent implements OnInit {
     this.successMessage = message;
     setTimeout(() => {
       this.successMessage = '';  // Limpa a mensagem após 3 segundos
-    }, 2000);  // Exibe a mensagem por 3 segundos
+    }, 1000);  // Exibe a mensagem por 3 segundos
   }
 
   filterPosts(): void {

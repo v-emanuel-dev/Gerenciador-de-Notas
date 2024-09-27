@@ -1,27 +1,37 @@
-# Frontend
+# Aplicativo de Notas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+Um aplicativo simples para criar, visualizar, editar e excluir notas. Este projeto foi desenvolvido com Angular, Node.js e MySQL.
 
-## Development server
+## Tecnologias Usadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Frontend**: Angular
+- **Backend**: Node.js
+- **Banco de Dados**: MySQL
+- **Estilização**: Bootstrap
+- **Ícones**: Font Awesome
+- **APIs**: RESTful API para comunicação entre frontend e backend
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Criar novas notas
+- Visualizar notas
+- Editar notas existentes
+- Excluir notas
+- Exportar notas como arquivos de texto
 
-## Build
+## Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Antes de começar, você precisará ter instalado em sua máquina:
 
-## Running unit tests
+- [Node.js](https://nodejs.org/)
+- [MySQL](https://www.mysql.com/)
+- [Angular CLI](https://angular.io/cli)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalação e Configuração
 
-## Running end-to-end tests
+### 1. Clone o repositório
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+git clone https://github.com/seu-usuario/app-notas.git
+cd app-notas
+cd frontend >> npm install --legacy-peer-deps >> ng serve -o
+cd backend >> npm install >> node app.js

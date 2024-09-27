@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,6 @@ export class PostDetailComponent implements OnInit {
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
-    private router: Router
   ) {}
 
   ngOnInit(): void {

@@ -1,0 +1,7 @@
+.post-title {
+    max-width: 300px; /* Defina a largura máxima da caixa */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    overflow: hidden; /* Esconde o texto que ultrapassar a largura máxima */
+    text-overflow: ellipsis; /* Mostra "..." quando o texto for muito longo */
+  }
+  

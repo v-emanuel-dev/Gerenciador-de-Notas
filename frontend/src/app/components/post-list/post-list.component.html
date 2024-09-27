@@ -1,20 +1,41 @@
 <div class="container mt-4">
-<div class="text-center">
-  <fa-icon [icon]="faCoffee" size="5x"></fa-icon>
-</div>
-<h1 class="text-center mb-4 mt-2">Notas</h1>
-  <div class="text-right mb-3">
-    <a routerLink="/posts/new" class="btn btn-dark">Nova Nota</a>
+  <div class="text-center">
+    <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
   </div>
+  <h1 class="text-center mb-4 mt-2">Notas</h1>
+
+  <div class="mb-3">
+    <a routerLink="/posts/new" class="btn btn-success">Nova Nota</a>
+  </div>
+  <!-- Mensagem quando a lista de notas estiver vazia -->
+  <div *ngIf="!posts || posts.length === 0" class="alert alert-info text-center" role="alert">
+    Adicione uma nota
+  </div>
+
   <ul class="list-group">
-    <li *ngFor="let post of posts" class="list-group-item d-flex justify-content-between align-items-center border rounded shadow-sm mb-2">
-      <div class="post-title">
-        <a [routerLink]="['/posts', post.id]" class="text-decoration-none text-dark font-weight-bold">{{ post.title }}</a>
-      </div>
-      <div>
-        <a [routerLink]="['/posts/edit', post.id]" class="btn btn-warning btn-sm me-2">Editar</a>
-        <button (click)="deletePost(post.id)" class="btn btn-danger btn-sm me-2">Excluir</button>
-        <button (click)="exportAsTxt(post)" class="btn btn-secondary btn-sm">Exportar</button>
+    <li *ngFor="let post of posts" class="list-group-item border rounded shadow-sm mb-2">
+      <a 
+        [routerLink]="['/posts', post.id]" 
+        class="text-decoration-none text-dark">
+        
+        <div class="post-title">
+          <span class="font-weight-bold" [title]="post.title">{{ post.title | slice:0:25 }}<span *ngIf="post.title.length > 30">...</span></span>
+        </div>
+      </a>
+
+      <div class="d-flex justify-content-end mt-2">
+        <a 
+          [routerLink]="['/posts/edit', post.id]" 
+          class="btn btn-warning btn-sm me-2" 
+          title="Editar">Editar</a>
+        <button 
+          (click)="deletePost(post.id)" 
+          class="btn btn-danger btn-sm me-2" 
+          title="Excluir">Excluir</button>
+        <button 
+          (click)="exportAsTxt(post)" 
+          class="btn btn-dark btn-sm" 
+          title="Exportar">Exportar</button>
       </div>
     </li>
   </ul>

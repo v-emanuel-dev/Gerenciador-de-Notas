@@ -21,7 +21,7 @@ export class PostListComponent implements OnInit {
 
   loadPosts(): void {
     this.postService.getPosts().subscribe(posts => {
-      this.posts = posts;
+      this.posts = posts.reverse(); // Inverte a ordem dos posts
     });
   }
 

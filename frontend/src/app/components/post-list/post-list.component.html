@@ -1,0 +1,21 @@
+<div class="container mt-4">
+<div class="text-center">
+  <fa-icon [icon]="faCoffee" size="5x"></fa-icon>
+</div>
+<h1 class="text-center mb-4 mt-2">Notas</h1>
+  <div class="text-right mb-3">
+    <a routerLink="/posts/new" class="btn btn-dark">Nova Nota</a>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let post of posts" class="list-group-item d-flex justify-content-between align-items-center border rounded shadow-sm mb-2">
+      <div class="post-title">
+        <a [routerLink]="['/posts', post.id]" class="text-decoration-none text-dark font-weight-bold">{{ post.title }}</a>
+      </div>
+      <div>
+        <a [routerLink]="['/posts/edit', post.id]" class="btn btn-warning btn-sm me-2">Editar</a>
+        <button (click)="deletePost(post.id)" class="btn btn-danger btn-sm me-2">Excluir</button>
+        <button (click)="exportAsTxt(post)" class="btn btn-secondary btn-sm">Exportar</button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="text-center">
+    <fa-icon [icon]="faCoffee" size="5x"></fa-icon>
+  </div>
+  <h1 class="text-center mb-4">{{ post.id ? 'Editar Nota' : 'Nova Nota' }}</h1>
+  <form (ngSubmit)="onSubmit()" class="bg-light p-4 rounded shadow">
+    <div class="form-group mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" id="title" [(ngModel)]="post.title" name="title" class="form-control" required placeholder="Insira o título aqui" />
+    </div>
+    <div class="form-group mb-4">
+      <label for="content" class="form-label">Conteúdo</label>
+      <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control" required rows="5" placeholder="Insira o conteúdo aqui"></textarea>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-dark">{{ post.id ? 'Atualizar' : 'Criar' }}</button>
+      <a routerLink="/posts" class="btn btn-danger">Cancelar</a>
+    </div>
+  </form>
+</div>

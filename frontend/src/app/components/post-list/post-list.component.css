@@ -22,3 +22,20 @@
   font-weight: 600; /* Peso da fonte mais forte */
   color: #333; /* Cor do texto */
 }
+
+/* Estilização do campo de pesquisa */
+.form-control.search {
+  padding: 1rem; /* Padding interno para conforto */
+}
+
+/* Efeito de foco */
+.form-control.search:focus {
+  border-color: #007bff; /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+  outline: none; /* Remove contorno padrão */
+}
+
+/* Efeito ao passar o mouse */
+.form-control.search:hover {
+  border-color: #007bff; /* Cor da borda ao passar o mouse */
+}

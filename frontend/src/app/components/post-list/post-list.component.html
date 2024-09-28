@@ -17,7 +17,7 @@
   <div class="mb-3">
     <input
       type="text"
-      class="form-control"
+      class="form-control search"
       placeholder="Pesquisar..."
       [(ngModel)]="searchTerm"
       (input)="filterPosts()"
@@ -36,7 +36,7 @@
 
   <ul class="list-group">
     <li *ngFor="let post of filteredPosts"
-     class="shadow-lg p-3 list-group-item border rounded shadow-sm mb-2">
+     class="shadow-lg p-3 bg-transparent list-group-item border rounded shadow-sm mb-2">
       <a
         [routerLink]="['/posts', post.id]"
         class="text-decoration-none text-dark d-flex justify-content-between align-items-center"

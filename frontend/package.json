@@ -1,6 +1,6 @@
 {
   "name": "notes",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,7 +23,6 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
     "file-saver": "^2.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

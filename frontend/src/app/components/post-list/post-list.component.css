@@ -1,44 +1,24 @@
+/* Lista de Itens */
 .list-group-item {
-  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s; /* Adicionando transição para transformação */
-  border-radius: 0.5rem; /* Arredondando os cantos */
-  padding: 1rem; /* Adicionando um padding confortável */
-  margin-bottom: 0.5rem; /* Ajustando a margem inferior */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Transições suaves */
+  border-radius: 0.75rem; /* Cantos mais arredondados */
+  padding: 1.25rem; /* Maior espaçamento interno para conforto visual */
+  margin-bottom: 1rem; /* Maior espaçamento entre os itens */
+  background-color: #ffffff; /* Fundo branco para contraste elegante */
+  border: 1px solid #e0e0e0; /* Bordas sutis */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve padrão */
 }
 
+/* Efeito de Hover */
 .list-group-item:hover {
-  background-color: #f7f7f7; /* Cor de fundo ao passar o mouse */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao passar o mouse */
-  transform: scale(1.00); /* Leve aumento ao passar o mouse */
+  background-color: #7f808128; /* Cor suave ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+  transform: scale(1.01); /* Aumento leve ao passar o mouse */
 }
 
+/* Estilos adicionais para título e conteúdo */
 .post-title {
-  font-size: 1.01rem; /* Aumentando o tamanho da fonte */
-  font-weight: 500; /* Ou 500, se você preferir um negrito ainda mais leve */
-  color: #333; /* Mudando a cor do texto */
-}
-
-.btn {
-  transition: background-color 0.3s, color 0.3s; /* Transições para os botões */
-}
-
-.btn-warning:hover {
-  background-color: #e0a800; /* Cor de fundo ao passar o mouse para o botão de editar */
-}
-
-.btn-danger:hover {
-  background-color: #c82333; /* Cor de fundo ao passar o mouse para o botão de excluir */
-}
-
-.btn-dark:hover {
-  background-color: #343a40; /* Cor de fundo ao passar o mouse para o botão de exportar */
-}
-
-.btn-light {
-  border: none; /* Remove a borda padrão */
-  background-color: transparent; /* Fundo transparente */
-  cursor: pointer; /* Muda o cursor ao passar o mouse */
-}
-
-.btn-light:hover {
-  opacity: 0.8; /* Leve efeito de hover */
+  font-size: 1.125rem; /* Tamanho da fonte aumentado para destaque */
+  font-weight: 600; /* Peso da fonte mais forte */
+  color: #333; /* Cor do texto */
 }

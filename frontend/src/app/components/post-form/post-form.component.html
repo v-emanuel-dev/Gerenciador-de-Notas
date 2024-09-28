@@ -1,30 +1,34 @@
 <div class="container mt-4">
   <!-- Mensagem de Sucesso -->
-  <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
+  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show text-center" role="alert">
     {{ successMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
-   <!-- Mensagem de Erro -->
-   <div *ngIf="errorMessage" class="alert alert-danger text-center" role="alert">
+  <!-- Mensagem de Erro -->
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
     {{ errorMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
-  <div class="text-center">
+  <div class="text-center mb-4">
     <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
   </div>
-  <h1 class="text-center mb-4">{{ post.id ? 'Editar Nota' : 'Nova Nota' }}</h1>
-  <form (ngSubmit)="onSubmit()" class="bg-light p-4 rounded shadow">
+
+  <h1 class="text-center mb-4 display-4">{{ post.id ? 'Editar Nota' : 'Nova Nota' }}</h1>
+
+  <form (ngSubmit)="onSubmit()" class="custom-form shadow-lg p-3 bg-light p-4 rounded shadow-sm border border-2 border-light">
     <div class="form-group mb-3">
-      <label for="title" class="form-label">Título</label>
+      <label for="title" class="form-label fw-bold">Título</label>
       <input type="text" id="title" [(ngModel)]="post.title" name="title" class="form-control" required placeholder="Insira o título aqui" />
     </div>
     <div class="form-group mb-4">
-      <label for="content" class="form-label">Conteúdo</label>
+      <label for="content" class="form-label fw-bold">Conteúdo</label>
       <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control" required rows="5" placeholder="Insira o conteúdo aqui"></textarea>
     </div>
     <div class="d-flex justify-content-between">
-      <button type="submit" class="btn btn-secondary">{{ post.id ? 'Atualizar' : 'Criar' }}</button>
-      <a routerLink="/posts" class="btn btn-danger">Cancelar</a>
+      <button type="submit" class="btn btn-primary px-4 py-2">{{ post.id ? 'Atualizar' : 'Criar' }}</button>
+      <a routerLink="/posts" class="btn btn-danger px-4 py-2">Cancelar</a>
     </div>
   </form>
 </div>

@@ -2,7 +2,7 @@
   <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
 </div>
 <div class="container mt-4" *ngIf="post">
-  <div class="bg-light p-4 rounded shadow">
+  <div class="custom-form shadow-lg p-3 bg-light p-4 rounded shadow-sm border border-2 border-light">
     <h3 class="text-center mb-3 post-title">{{ post.title }}</h3>
     <div class="form-group mb-4">
       <label for="content" class="form-label">Conteúdo</label>
@@ -16,7 +16,7 @@
       </textarea>
     </div>
     <div class="text-center mt-4">
-      <a routerLink="/posts" class="btn btn-secondary">Voltar</a>
+      <a routerLink="/posts" class="btn btn-primary">Voltar</a>
     </div>
   </div>
 </div>

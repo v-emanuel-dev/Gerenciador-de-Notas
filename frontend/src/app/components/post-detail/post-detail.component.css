@@ -4,12 +4,22 @@
     overflow: hidden; /* Esconde o texto que ultrapassar a largura máxima */
     text-overflow: ellipsis; /* Mostra "..." quando o texto for muito longo */
   }
-  
+
   .text-center {
     text-align: center; /* Garante que o texto esteja centralizado */
   }
-  
+
   .post-title {
     margin: 0 auto; /* Remove margens padrão que podem estar afetando a centralização */
   }
-  
+
+  .custom-form {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+    border-radius: 0.5rem; /* Arredondamento dos cantos */
+  }
+
+  .custom-form:hover {
+    transform: scale(1.03); /* Leve aumento ao passar o mouse */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra mais intensa ao passar o mouse */
+  }

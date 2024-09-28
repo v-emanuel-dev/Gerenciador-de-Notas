@@ -4,11 +4,16 @@
     {{ successMessage }}
   </div>
 
+   <!-- Mensagem de Erro -->
+   <div *ngIf="errorMessage" class="alert alert-danger text-center" role="alert">
+    {{ errorMessage }}
+  </div>
+
   <div class="text-center">
     <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
   </div>
   <h1 class="text-center mb-4">{{ post.id ? 'Editar Nota' : 'Nova Nota' }}</h1>
-  <form (ngSubmit)="onSubmit()" class="bg-dark p-4 rounded shadow">
+  <form (ngSubmit)="onSubmit()" class="bg-light p-4 rounded shadow">
     <div class="form-group mb-3">
       <label for="title" class="form-label">Título</label>
       <input type="text" id="title" [(ngModel)]="post.title" name="title" class="form-control" required placeholder="Insira o título aqui" />

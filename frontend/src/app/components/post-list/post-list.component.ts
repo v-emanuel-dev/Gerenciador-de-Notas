@@ -42,23 +42,23 @@ export class PostListComponent implements OnInit {
   }
 
   createPost(): void {
-    // Validação: verifica se o conteúdo da nota não está vazio
-    if (!this.noteContent.trim()) {
-      this.errorMessage = 'O conteúdo da nota não pode estar vazio!'; // Mensagem de erro
-      return; // Impede a criação da nota
+    // Verifica se o conteúdo da nota está vazio ou só contém espaços em branco
+    if (!this.noteContent || !this.noteContent.trim()) {
+      this.errorMessage = 'O conteúdo da nota não pode estar vazio!';
+      return;
     }
 
-    // Crie o objeto newPost com todas as propriedades necessárias
+    // Cria o objeto newPost
     const newPost: Post = {
-      id: 0, // Ou você pode omitir este campo se o backend gerar o ID
+      id: 0,
       title: this.noteContent,
-      content: this.noteContent // Se você tiver um campo de conteúdo
+      content: this.noteContent
     };
 
     this.postService.createPost(newPost).subscribe(() => {
-      this.loadPosts(); // Recarrega a lista de posts após a criação
+      this.loadPosts();
       this.noteContent = ''; // Limpa o campo de input
-      this.successMessage = 'Nota criada com sucesso!'; // Mensagem de sucesso
+      this.successMessage = 'Nota criada com sucesso!';
       this.errorMessage = null; // Limpa a mensagem de erro
     });
   }
@@ -73,8 +73,8 @@ export class PostListComponent implements OnInit {
   showSuccessMessage(message: string): void {
     this.successMessage = message;
     setTimeout(() => {
-      this.successMessage = '';  // Limpa a mensagem após 3 segundos
-    }, 1000);  // Exibe a mensagem por 3 segundos
+      this.successMessage = '';
+    }, 1000);
   }
 
   filterPosts(): void {

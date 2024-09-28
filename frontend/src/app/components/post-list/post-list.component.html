@@ -1,8 +1,13 @@
 <div class="container mt-4">
 
   <!-- Mensagem de Sucesso -->
-  <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
+  <div *ngIf="successMessage" class="alert alert-info text-center" role="alert">
     {{ successMessage }}
+  </div>
+
+  <!-- Exibe mensagem de erro -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
   </div>
 
   <div class="text-center">
@@ -10,7 +15,7 @@
   </div>
 
   <div class="mb-3">
-    <a routerLink="/posts/new" class="btn btn-success">Nova Nota</a>
+    <a routerLink="/posts/new" class="btn btn-primary">Nova Nota</a>
   </div>
 
   <!-- Barra de Pesquisa -->
@@ -24,8 +29,13 @@
     />
   </div>
 
-  <!-- Mensagem quando a lista de notas estiver vazia -->
-  <div *ngIf="!filteredPosts || filteredPosts.length === 0" class="alert alert-info text-center" role="alert">
+  <!-- Verifica se há um termo de pesquisa e nenhum resultado -->
+  <div *ngIf="searchTerm && filteredPosts.length === 0" class="alert alert-warning text-center" role="alert">
+    Nenhum resultado encontrado
+  </div>
+
+  <!-- Verifica se não há posts e nenhum termo de pesquisa -->
+  <div *ngIf="!searchTerm && filteredPosts.length === 0" class="alert alert-info text-center" role="alert">
     Adicione uma nota
   </div>
 

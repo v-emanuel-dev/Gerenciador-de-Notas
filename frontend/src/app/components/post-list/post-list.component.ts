@@ -85,9 +85,10 @@ export class PostListComponent implements OnInit {
   // Method to filter posts based on the search term
   filterPosts(): void {
     if (this.searchTerm) {
-      // Filter posts that include the search term in the title
+      // Filter posts that include the search term in the title or content
       this.filteredPosts = this.posts.filter(post =>
-        post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        post.content.toLowerCase().includes(this.searchTerm.toLowerCase()) // Add this line
       );
     } else {
       this.filteredPosts = this.posts; // If the search is empty, show all posts

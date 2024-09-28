@@ -1,22 +1,30 @@
+<!-- Center the coffee icon -->
 <div class="text-center">
+  <!-- Display the coffee icon with a size of 4x -->
   <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
 </div>
+
+<!-- Show this container only if the post data is available -->
 <div class="container mt-4" *ngIf="post">
+  <!-- Custom form container with shadow and padding for better aesthetics -->
   <div class="custom-form shadow-lg p-3 bg-light p-4 rounded shadow-sm border border-2 border-light">
+
+    <!-- Display the title of the post centered -->
     <h3 class="text-center mb-3 post-title">{{ post.title }}</h3>
+
+    <!-- Form group for displaying the content -->
     <div class="form-group mb-4">
-      <label for="content" class="form-label">Conteúdo</label>
-      <textarea
-        id="content"
-        [(ngModel)]="post.content"
-        name="content"
-        class="form-control lead"
-        rows="5"
-        readonly>
+      <label for="content" class="form-label">Content</label>
+      <!-- Textarea to show the post content, read-only to prevent editing -->
+      <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control lead" rows="5" readonly>
       </textarea>
     </div>
+
+    <!-- Center the "Back" button -->
     <div class="text-center mt-4">
-      <a routerLink="/posts" class="btn btn-primary">Voltar</a>
+      <!-- Button to go back to the posts list -->
+      <a routerLink="/posts" class="btn btn-primary">Back</a>
     </div>
+
   </div>
 </div>

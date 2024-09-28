@@ -1,10 +1,20 @@
+/* Custom styles for the form */
 .custom-form {
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
-  border-radius: 0.5rem; /* Arredondamento dos cantos */
+  /* Smooth transition effects for transform and box-shadow properties */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* A stronger shadow effect to give depth to the form */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  /* Rounded corners for a softer appearance */
+  border-radius: 0.5rem;
 }
 
+/* Effect when the mouse hovers over the form */
 .custom-form:hover {
-  transform: scale(1.03); /* Leve aumento ao passar o mouse */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra mais intensa ao passar o mouse */
+  /* Slightly increase the size of the form for a dynamic effect */
+  transform: scale(1.03);
+
+  /* Enhance the shadow effect to make it appear more elevated */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }

@@ -1,34 +1,37 @@
 <div class="container mt-4">
-  <!-- Mensagem de Sucesso -->
+
+  <!-- Success Message -->
   <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show text-center" role="alert">
-    {{ successMessage }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {{ successMessage }} <!-- Displays the success message when a note is created or updated -->
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the success message -->
   </div>
 
-  <!-- Mensagem de Erro -->
+  <!-- Error Message -->
   <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-    {{ errorMessage }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {{ errorMessage }} <!-- Displays the error message if there is an issue -->
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the error message -->
   </div>
 
   <div class="text-center mb-4">
-    <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
+    <fa-icon [icon]="faCoffee" size="4x"></fa-icon> <!-- FontAwesome icon representing coffee -->
   </div>
 
-  <h1 class="text-center mb-4 display-4">{{ post.id ? 'Editar Nota' : 'Nova Nota' }}</h1>
+  <h1 class="text-center mb-4 display-4">{{ post.id ? 'Edit Note' : 'New Note' }}</h1> <!-- Dynamic title changes based on whether we are editing or creating a note -->
 
   <form (ngSubmit)="onSubmit()" class="custom-form shadow-lg p-3 bg-light p-4 rounded shadow-sm border border-2 border-light">
     <div class="form-group mb-3">
-      <label for="title" class="form-label fw-bold">Título</label>
-      <input type="text" id="title" [(ngModel)]="post.title" name="title" class="form-control" required placeholder="Insira o título aqui" />
+      <label for="title" class="form-label fw-bold">Title</label> <!-- Label for the title input -->
+      <input type="text" id="title" [(ngModel)]="post.title" name="title" class="form-control" required placeholder="Enter the title here" /> <!-- Input field for the note title -->
     </div>
+
     <div class="form-group mb-4">
-      <label for="content" class="form-label fw-bold">Conteúdo</label>
-      <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control" required rows="5" placeholder="Insira o conteúdo aqui"></textarea>
+      <label for="content" class="form-label fw-bold">Content</label> <!-- Label for the content textarea -->
+      <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control" required rows="5" placeholder="Enter the content here"></textarea> <!-- Textarea for the note content -->
     </div>
-    <div class="d-flex justify-content-between">
-      <button type="submit" class="btn btn-primary px-4 py-2">{{ post.id ? 'Atualizar' : 'Criar' }}</button>
-      <a routerLink="/posts" class="btn btn-danger px-4 py-2">Cancelar</a>
+
+    <div class="d-flex justify-content-between"> <!-- Flexbox for button alignment -->
+      <button type="submit" class="btn btn-primary px-4 py-2">{{ post.id ? 'Update' : 'Create' }}</button> <!-- Submit button to create or update the note -->
+      <a routerLink="/posts" class="btn btn-danger px-4 py-2">Cancel</a> <!-- Button to cancel and go back to the posts list -->
     </div>
   </form>
 </div>

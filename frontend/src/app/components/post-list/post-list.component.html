@@ -1,65 +1,50 @@
 <div class="container mt-4">
 
-  <!-- Mensagem de Sucesso -->
+  <!-- Success Message -->
   <div *ngIf="successMessage" class="alert alert-info text-center" role="alert">
-    {{ successMessage }}
+    {{ successMessage }} <!-- Displays the success message if it exists -->
   </div>
 
+  <!-- Coffee Icon -->
   <div class="text-center">
-    <fa-icon [icon]="faCoffee" size="4x"></fa-icon>
+    <fa-icon [icon]="faCoffee" size="4x"></fa-icon> <!-- Displays a coffee icon -->
   </div>
 
+  <!-- Button to create a new note -->
   <div class="mb-3">
-    <a routerLink="/posts/new" class="btn btn-primary">Nova Nota</a>
+    <a routerLink="/posts/new" class="btn btn-primary">New Note</a> <!-- Link to new note creation -->
   </div>
 
-  <!-- Barra de Pesquisa -->
+  <!-- Search Bar -->
   <div class="mb-3">
-    <input
-      type="text"
-      class="form-control search"
-      placeholder="Pesquisar..."
-      [(ngModel)]="searchTerm"
-      (input)="filterPosts()"
-    />
+    <input type="text" class="form-control search" placeholder="Search..." [(ngModel)]="searchTerm"
+      (input)="filterPosts()" /> <!-- Input field for searching posts -->
   </div>
 
-  <!-- Verifica se há um termo de pesquisa e nenhum resultado -->
+  <!-- Check if there is a search term but no results -->
   <div *ngIf="searchTerm && filteredPosts.length === 0" class="alert alert-warning text-center" role="alert">
-    Nenhum resultado encontrado
+    No results found <!-- Message when no results are found -->
   </div>
 
-  <!-- Verifica se não há posts e nenhum termo de pesquisa -->
+  <!-- Check if there are no posts and no search term -->
   <div *ngIf="!searchTerm && filteredPosts.length === 0" class="alert alert-info text-center" role="alert">
-    Adicione uma nota
+    Add a note <!-- Message when there are no posts -->
   </div>
 
   <ul class="list-group">
-    <li *ngFor="let post of filteredPosts"
-     class="shadow-lg p-3 bg-transparent list-group-item border rounded shadow-sm mb-2">
-      <a
-        [routerLink]="['/posts', post.id]"
-        class="text-decoration-none text-dark d-flex justify-content-between align-items-center"
-        style="width: 100%;">
-
+    <!-- Loop through filteredPosts and create a list item for each post -->
+    <li *ngFor="let post of filteredPosts" class="shadow-lg p-3 bg-transparent list-group-item border rounded shadow-sm mb-2">
+      <a [routerLink]="['/posts', post.id]" class="text-decoration-none text-dark d-flex justify-content-between align-items-center" style="width: 100%;">
         <div class="post-title flex-grow-1">
           <span class="font-weight-bold" [title]="post.title">{{ post.title | slice:0:25 }}<span *ngIf="post.title.length > 30">...</span></span>
+          <!-- Show a truncated title with ellipsis if it's too long -->
         </div>
       </a>
 
       <div class="d-flex justify-content-end mt-2">
-        <a
-          [routerLink]="['/posts/edit', post.id]"
-          class="btn btn-warning btn-sm me-2"
-          title="Editar">Editar</a>
-        <button
-          (click)="deletePost(post.id)"
-          class="btn btn-danger btn-sm me-2"
-          title="Excluir">Excluir</button>
-        <button
-          (click)="exportAsTxt(post)"
-          class="btn btn-dark btn-sm"
-          title="Exportar">Exportar</button>
+        <a [routerLink]="['/posts/edit', post.id]" class="btn btn-warning btn-sm me-2" title="Editar">Editar</a>
+        <button (click)="deletePost(post.id)" class="btn btn-danger btn-sm me-2" title="Excluir">Excluir</button>
+        <button (click)="exportAsTxt(post)" class="btn btn-dark btn-sm" title="Exportar">Exportar</button>
       </div>
     </li>
   </ul>

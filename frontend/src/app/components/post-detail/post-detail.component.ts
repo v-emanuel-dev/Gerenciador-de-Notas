@@ -19,9 +19,12 @@ export class PostDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Get the post ID from the current route parameters
     const id = this.route.snapshot.params['id'];
+
+    // Fetch the post using the PostService
     this.postService.getPost(+id).subscribe(post => {
-      this.post = post;
+      this.post = post; // Assign the fetched post data to the post variable
     });
   }
 }

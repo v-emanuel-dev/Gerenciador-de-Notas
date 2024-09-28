@@ -11,79 +11,88 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
-  faCoffee = faCoffee;
-  successMessage: string | null = null;
-  errorMessage: string | null = null; // Para mensagens de erro
-  filteredPosts: Post[] = [];
-  searchTerm: string = '';
-  noteContent: string = ''; // Campo para armazenar o conteúdo da nota
+  posts: Post[] = [];               // Array to hold all posts
+  faCoffee = faCoffee;              // Icon for UI
+  successMessage: string | null = null;  // Message to display success
+  errorMessage: string | null = null;    // Message to display errors
+  filteredPosts: Post[] = [];       // Array to hold filtered posts based on search
+  searchTerm: string = '';           // Search term input
+  noteContent: string = '';          // Field to store the content of the note
 
   constructor(private postService: PostService, private router: Router) {
+    // Load theme preference from localStorage (if applicable)
     const savedTheme = localStorage.getItem('isDarkTheme');
-   }
+    // You may want to implement theme switching logic here
+  }
 
   ngOnInit(): void {
-    this.loadPosts();
+    this.loadPosts(); // Load posts when the component initializes
   }
 
+  // Method to load posts from the service
   loadPosts(): void {
     this.postService.getPosts().subscribe(posts => {
-      this.posts = posts.reverse(); // Inverte a ordem dos posts
-      this.filteredPosts = this.posts; // Inicializa filteredPosts com todos os posts
+      this.posts = posts.reverse(); // Reverse the order of posts for display
+      this.filteredPosts = this.posts; // Initialize filteredPosts with all posts
     });
   }
 
+  // Method to delete a post by its ID
   deletePost(id: number): void {
     this.postService.deletePost(id).subscribe(() => {
-      this.loadPosts(); // Recarrega a lista de posts após a exclusão
-      this.showSuccessMessage('Nota excluída com sucesso!');
+      this.loadPosts(); // Reload the list of posts after deletion
+      this.showSuccessMessage('Note deleted successfully!'); // Show success message
     });
   }
 
+  // Method to create a new post
   createPost(): void {
-    // Verifica se o conteúdo da nota está vazio ou só contém espaços em branco
+    // Check if the note content is empty or contains only whitespace
     if (!this.noteContent || !this.noteContent.trim()) {
-      this.errorMessage = 'O conteúdo da nota não pode estar vazio!';
-      return;
+      this.errorMessage = 'Note content cannot be empty!'; // Set error message
+      return; // Exit the method if content is invalid
     }
 
-    // Cria o objeto newPost
+    // Create the newPost object
     const newPost: Post = {
-      id: 0,
-      title: this.noteContent,
-      content: this.noteContent
+      id: 0,                           // Temporary ID, will be assigned by the server
+      title: this.noteContent,         // Set title as note content
+      content: this.noteContent        // Set content as note content
     };
 
     this.postService.createPost(newPost).subscribe(() => {
-      this.loadPosts();
-      this.noteContent = ''; // Limpa o campo de input
-      this.successMessage = 'Nota criada com sucesso!';
-      this.errorMessage = null; // Limpa a mensagem de erro
+      this.loadPosts();               // Reload posts after creation
+      this.noteContent = '';          // Clear the input field
+      this.successMessage = 'Note created successfully!'; // Set success message
+      this.errorMessage = null;       // Clear error message
     });
   }
 
-  exportAsTxt(post: any): void {
-    const content = `Título: ${post.title}\n\nConteúdo:\n${post.content}`;
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, `${post.title}.txt`);
-    this.showSuccessMessage('Nota exportada com sucesso!');
+  // Method to export a post as a .txt file
+  exportAsTxt(post: Post): void {
+    const content = `Título: ${post.title}\n\nConteúdo:\n${post.content}`; // Format content
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' }); // Create a Blob for the content
+    saveAs(blob, `${post.title}.txt`); // Use FileSaver to save the file
+    this.showSuccessMessage('Note exported successfully!'); // Show success message
   }
 
+  // Method to display a success message for a short time
   showSuccessMessage(message: string): void {
-    this.successMessage = message;
+    this.successMessage = message; // Set the success message
     setTimeout(() => {
-      this.successMessage = '';
+      this.successMessage = ''; // Clear the message after 1 second
     }, 1000);
   }
 
+  // Method to filter posts based on the search term
   filterPosts(): void {
     if (this.searchTerm) {
+      // Filter posts that include the search term in the title
       this.filteredPosts = this.posts.filter(post =>
         post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     } else {
-      this.filteredPosts = this.posts; // Se a pesquisa estiver vazia, mostra todos os posts
+      this.filteredPosts = this.posts; // If the search is empty, show all posts
     }
   }
 }

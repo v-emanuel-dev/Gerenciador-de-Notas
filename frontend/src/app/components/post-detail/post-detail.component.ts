@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-detail',
@@ -11,7 +10,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class PostDetailComponent implements OnInit {
   post: Post | undefined;
-  faCoffee = faCoffee;
 
   constructor(
     private postService: PostService,

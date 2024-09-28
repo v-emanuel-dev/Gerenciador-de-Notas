@@ -5,14 +5,19 @@
     {{ successMessage }} <!-- Displays the success message if it exists -->
   </div>
 
-  <!-- Coffee Icon -->
+  <!-- Center the note icon -->
   <div class="text-center">
-    <fa-icon [icon]="faCoffee" size="4x"></fa-icon> <!-- Displays a coffee icon -->
+    <!-- Display the note icon with a size of 88 px -->
+    <i class="fa-solid fa-note-sticky"></i>
   </div>
+
+  <h1 class="text-center mb-1 display-4">Notes</h1>
 
   <!-- Button to create a new note -->
   <div class="mb-3">
-    <a routerLink="/posts/new" class="btn btn-primary">New Note</a> <!-- Link to new note creation -->
+    <a routerLink="/posts/new" class="btn btn-primary">
+      <i class="fa-solid fa-plus"></i>
+      New Note</a> <!-- Link to new note creation -->
   </div>
 
   <!-- Search Bar -->
@@ -35,17 +40,46 @@
     <!-- Loop through filteredPosts and create a list item for each post -->
     <li *ngFor="let post of filteredPosts" class="shadow-lg p-3 bg-transparent list-group-item border rounded shadow-sm mb-2">
       <a [routerLink]="['/posts', post.id]" class="text-decoration-none text-dark d-flex justify-content-between align-items-center" style="width: 100%;">
-        <div class="post-title flex-grow-1">
-          <span class="font-weight-bold" [title]="post.title">{{ post.title | slice:0:25 }}<span *ngIf="post.title.length > 30">...</span></span>
+        <div class="post-title flex-grow-1 display-4">
+          <span class="display-5 mb-4" [title]="post.title">{{ post.title | slice:0:25 }}<span *ngIf="post.title.length > 30">...</span></span>
           <!-- Show a truncated title with ellipsis if it's too long -->
         </div>
       </a>
 
       <div class="d-flex justify-content-end mt-2">
-        <a [routerLink]="['/posts/edit', post.id]" class="btn btn-warning btn-sm me-2" title="Editar">Editar</a>
-        <button (click)="deletePost(post.id)" class="btn btn-danger btn-sm me-2" title="Excluir">Excluir</button>
-        <button (click)="exportAsTxt(post)" class="btn btn-dark btn-sm" title="Exportar">Exportar</button>
+        <!-- This div uses Bootstrap's flex utility classes to align its contents to the end (right side) of the container and adds top margin. -->
+
+        <a [routerLink]="['/posts/edit', post.id]" class="btn btn-warning btn-sm me-2" title="Editar">
+          <!-- This anchor tag acts as a button that navigates to the edit page for the specific post.
+               It uses Angular's routerLink directive to create a dynamic link based on the post's ID.
+               The classes btn, btn-warning, and btn-sm are Bootstrap classes to style the button as a small warning button.
+               'me-2' adds right margin for spacing between buttons. -->
+          <i class="fa-solid fa-pen"></i>
+          <!-- This icon represents a pen, indicating an editing action. It's styled using Font Awesome classes. -->
+          Editar
+          <!-- This text label indicates the action of the button (to edit). -->
+        </a>
+
+        <button (click)="deletePost(post.id)" class="btn btn-danger btn-sm me-2" title="Excluir">
+          <!-- This button triggers the deletePost function when clicked, passing the ID of the post to delete.
+               The classes btn, btn-danger, and btn-sm style it as a small danger button (red color).
+               'me-2' adds right margin for spacing. -->
+          <i class="fa-solid fa-trash"></i>
+          <!-- This icon represents a trash can, indicating a delete action. Styled with Font Awesome classes. -->
+          Excluir
+          <!-- This text label indicates the action of the button (to delete). -->
+        </button>
+
+        <button (click)="exportAsTxt(post)" class="btn btn-dark btn-sm" title="Exportar">
+          <!-- This button triggers the exportAsTxt function when clicked, passing the current post to export it as a text file.
+               The classes btn, btn-dark, and btn-sm style it as a small dark button. -->
+          <i class="fa-solid fa-download"></i>
+          <!-- This icon represents a download action, indicating that the post can be exported. Styled with Font Awesome classes. -->
+          Exportar
+          <!-- This text label indicates the action of the button (to export). -->
+        </button>
       </div>
+
     </li>
   </ul>
 </div>

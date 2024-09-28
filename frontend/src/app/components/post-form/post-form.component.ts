@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-form',
@@ -11,8 +10,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class PostFormComponent implements OnInit {
   post: Post = { title: '', content: '', id: 0 }; // Initialize the post object with empty values
-  faCoffee = faCoffee; // FontAwesome icon for coffee
-
   successMessage: string | null = null; // Variable to store success message
   errorMessage: string | null = null; // Variable to store error message
 
@@ -45,7 +42,7 @@ export class PostFormComponent implements OnInit {
         this.showSuccessMessage('Post updated successfully!'); // Show success message for update
         setTimeout(() => {
           this.router.navigate(['/posts']); // Navigate to posts list after 1 second
-        }, 1000);
+        }, 1500);
       });
     } else {
       // If no ID, create a new post
@@ -53,7 +50,7 @@ export class PostFormComponent implements OnInit {
         this.showSuccessMessage('Post created successfully!'); // Show success message for creation
         setTimeout(() => {
           this.router.navigate(['/posts']); // Navigate to posts list after 1 second
-        }, 1000);
+        }, 1500);
       });
     }
   }
@@ -63,7 +60,7 @@ export class PostFormComponent implements OnInit {
     this.errorMessage = null; // Clear error message when showing success
     setTimeout(() => {
       this.successMessage = null; // Clear the success message after 3 seconds
-    }, 3000);
+    }, 1500);
   }
 
   showErrorMessage(message: string): void {
@@ -71,6 +68,6 @@ export class PostFormComponent implements OnInit {
     this.successMessage = null; // Clear success message when showing error
     setTimeout(() => {
       this.errorMessage = null; // Clear the error message after 3 seconds
-    }, 3000);
+    }, 1500);
   }
 }

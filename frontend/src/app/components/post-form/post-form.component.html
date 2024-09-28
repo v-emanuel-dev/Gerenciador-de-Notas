@@ -12,8 +12,10 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the error message -->
   </div>
 
-  <div class="text-center mb-4">
-    <fa-icon [icon]="faCoffee" size="4x"></fa-icon> <!-- FontAwesome icon representing coffee -->
+  <!-- Center the note icon -->
+  <div class="text-center">
+    <!-- Display the note icon with a size of 88 px -->
+    <i class="fa-solid fa-note-sticky"></i>
   </div>
 
   <h1 class="text-center mb-4 display-4">{{ post.id ? 'Edit Note' : 'New Note' }}</h1> <!-- Dynamic title changes based on whether we are editing or creating a note -->

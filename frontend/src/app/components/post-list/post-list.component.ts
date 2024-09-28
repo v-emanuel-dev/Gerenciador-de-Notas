@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
 import { saveAs } from 'file-saver';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];               // Array to hold all posts
-  faCoffee = faCoffee;              // Icon for UI
   successMessage: string | null = null;  // Message to display success
   errorMessage: string | null = null;    // Message to display errors
   filteredPosts: Post[] = [];       // Array to hold filtered posts based on search
@@ -81,7 +79,7 @@ export class PostListComponent implements OnInit {
     this.successMessage = message; // Set the success message
     setTimeout(() => {
       this.successMessage = ''; // Clear the message after 1 second
-    }, 1000);
+    }, 1500);
   }
 
   // Method to filter posts based on the search term

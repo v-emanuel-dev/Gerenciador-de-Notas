@@ -1,6 +1,6 @@
 {
-  "name": "notas",
-  "version": "0.0.1",
+  "name": "notes",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

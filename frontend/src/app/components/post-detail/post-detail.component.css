@@ -24,3 +24,8 @@
   transform: scale(1.03); /* Slightly increase the size when hovering */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Intense shadow when hovered */
 }
+
+.fa-note-sticky{
+  font-size: 88px; /* Change the size of the icon */
+  color: #000000; /* Change the color to blue */
+}

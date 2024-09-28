@@ -18,3 +18,8 @@
   /* Enhance the shadow effect to make it appear more elevated */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
+
+.fa-note-sticky{
+  font-size: 88px; /* Change the size of the icon */
+  color: #000000; /* Change the color to blue */
+}

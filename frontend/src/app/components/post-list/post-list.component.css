@@ -21,3 +21,33 @@
 .form-control.search:hover {
   border-color: #007bff; /* Border color changes to primary blue on hover */
 }
+
+/* Style for the Font Awesome icon */
+.fa-download {
+  font-size: 15px; /* Change the size of the icon */
+  color: #ffffff; /* Change the color to blue */
+  margin-right: 5px; /* Add space around the icon */
+}
+
+.fa-plus {
+  font-size: 15px; /* Change the size of the icon */
+  color: #ffffff; /* Change the color to blue */
+  margin-right: 5px; /* Add space around the icon */
+}
+
+.fa-trash {
+  font-size: 15px; /* Change the size of the icon */
+  color: #ffffff; /* Change the color to blue */
+  margin-right: 5px; /* Add space around the icon */
+}
+
+.fa-pen{
+  font-size: 15px; /* Change the size of the icon */
+  color: #ffffff; /* Change the color to blue */
+  margin-right: 5px; /* Add space around the icon */
+}
+
+.fa-note-sticky{
+  font-size: 88px; /* Change the size of the icon */
+  color: #000000; /* Change the color to blue */
+}

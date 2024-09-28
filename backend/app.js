@@ -1,20 +1,20 @@
 // app.js
 
-// Importando os módulos necessários
+// Importing necessary modules
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// Inicializando a aplicação Express
+// Initializing the Express application
 const app = express();
 
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 
-// Importando e usando as rotas de posts
+// Importing and using the post routes
 const postsRoutes = require('./routes/postsRoutes');
 app.use('/posts', postsRoutes);
 
-// Exportando a instância do app para ser usada no server.js
+// Exporting the app instance to be used in server.js
 module.exports = app;

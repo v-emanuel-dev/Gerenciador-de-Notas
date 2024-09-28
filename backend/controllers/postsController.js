@@ -1,9 +1,9 @@
 // controllers/postsController.js
 
-// Importando a conexão com o banco de dados
+// Importing the database connection
 const db = require('../config/db');
 
-// Função para listar todos os posts
+// Function to list all posts
 exports.getAllPosts = (req, res) => {
   db.query('SELECT * FROM posts', (err, results) => {
     if (err) {
@@ -13,17 +13,17 @@ exports.getAllPosts = (req, res) => {
   });
 };
 
-// Função para obter um post específico pelo ID
+// Function to get a specific post by ID
 exports.getPostById = (req, res) => {
   db.query('SELECT * FROM posts WHERE id = ?', [req.params.id], (err, results) => {
     if (err || results.length === 0) {
-      return res.status(404).json({ error: 'Post não encontrado' });
+      return res.status(404).json({ error: 'Post not found' });
     }
     res.json(results[0]);
   });
 };
 
-// Função para criar um novo post
+// Function to create a new post
 exports.createPost = (req, res) => {
   const { title, content } = req.body;
   db.query('INSERT INTO posts (title, content) VALUES (?, ?)', [title, content], (err, results) => {
@@ -34,7 +34,7 @@ exports.createPost = (req, res) => {
   });
 };
 
-// Função para atualizar um post existente
+// Function to update an existing post
 exports.updatePost = (req, res) => {
   const { title, content } = req.body;
   db.query('UPDATE posts SET title = ?, content = ? WHERE id = ?', [title, content, req.params.id], (err) => {
@@ -45,7 +45,7 @@ exports.updatePost = (req, res) => {
   });
 };
 
-// Função para excluir um post pelo ID
+// Function to delete a post by ID
 exports.deletePost = (req, res) => {
   db.query('DELETE FROM posts WHERE id = ?', [req.params.id], (err) => {
     if (err) {

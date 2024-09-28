@@ -1,16 +1,16 @@
 // routes/postsRoutes.js
 
-// Importando o módulo express e o controller de posts
+// Importing the express module and the posts controller
 const express = require('express');
-const router = express.Router();
-const postsController = require('../controllers/postsController');
+const router = express.Router(); // Creating a new router object
+const postsController = require('../controllers/postsController'); // Importing the posts controller
 
-// Definindo as rotas e associando com as funções do controller
-router.get('/', postsController.getAllPosts);
-router.get('/:id', postsController.getPostById);
-router.post('/', postsController.createPost);
-router.put('/:id', postsController.updatePost);
-router.delete('/:id', postsController.deletePost);
+// Defining the routes and associating them with the controller functions
+router.get('/', postsController.getAllPosts); // Route to get all posts
+router.get('/:id', postsController.getPostById); // Route to get a specific post by ID
+router.post('/', postsController.createPost); // Route to create a new post
+router.put('/:id', postsController.updatePost); // Route to update an existing post by ID
+router.delete('/:id', postsController.deletePost); // Route to delete a post by ID
 
-// Exportando o router para ser usado no app principal
+// Exporting the router to be used in the main app
 module.exports = router;

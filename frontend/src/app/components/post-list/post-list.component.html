@@ -41,7 +41,7 @@
     <li *ngFor="let post of filteredPosts" class="shadow-lg p-3 bg-transparent list-group-item border rounded shadow-sm mb-2">
       <a [routerLink]="['/posts', post.id]" class="text-decoration-none text-dark d-flex justify-content-between align-items-center" style="width: 100%;">
         <div class="post-title flex-grow-1 display-4">
-          <span class="display-5 mb-4" [title]="post.title">{{ post.title | slice:0:25 }}<span *ngIf="post.title.length > 30">...</span></span>
+          <span class="display-5 mb-4" [title]="post.title">{{ post.title | slice:0:40 }}<span *ngIf="post.title.length > 40">...</span></span>
           <!-- Show a truncated title with ellipsis if it's too long -->
         </div>
       </a>

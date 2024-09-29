@@ -1,4 +1,5 @@
-// Importing the MySQL library
+// config/db.js
+
 const mysql = require('mysql2');
 
 // Creating a connection to the MySQL database

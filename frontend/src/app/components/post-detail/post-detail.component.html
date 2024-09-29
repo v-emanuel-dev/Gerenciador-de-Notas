@@ -22,21 +22,21 @@
       </textarea>
     </div>
 
-    <!-- Container para os botões -->
-  <div class="d-flex justify-content-between mt-4">
-    <!-- Botões Edit e Save à esquerda -->
-    <div>
-      <!-- Botão Edit, visível quando não está no modo de edição -->
-      <button *ngIf="!isEditing" class="btn btn-warning me-2" (click)="editPost()">Edit</button>
+    <!-- Container for buttons -->
+    <div class="d-flex justify-content-between mt-4">
+       <!-- Back button on the left -->
+      <div>
+        <a routerLink="/posts" class="btn btn-primary me-2">Back</a>
+      </div>
 
-      <!-- Botão Save, visível quando está no modo de edição -->
-      <button *ngIf="isEditing" class="btn btn-success" (click)="savePost()">Save</button>
+      <!-- Edit and Save buttons on the right -->
+      <div>
+        <!-- Edit button, visible when not in edit mode -->
+        <button *ngIf="!isEditing" class="btn btn-warning" (click)="editPost()">Edit</button>
+        <!-- Save button, visible when in edit mode -->
+        <button *ngIf="isEditing" class="btn btn-success" (click)="savePost()">Save</button>
+      </div>
+
     </div>
-
-    <!-- Botão Back à direita -->
-    <div>
-      <a routerLink="/posts" class="btn btn-primary">Back</a>
-    </div>
-
   </div>
 </div>

@@ -17,14 +17,22 @@
     <div class="form-group mb-4">
       <label for="content" class="form-label">Content</label>
       <!-- Textarea to show the post content, read-only to prevent editing -->
-      <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control lead" rows="5" readonly>
-      </textarea>
+      <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control lead" rows="5"
+        [readonly]="!isEditing">
+    </textarea>
     </div>
 
-    <!-- Center the "Back" button -->
+    <!-- Center the "Back" and "Edit" buttons -->
     <div class="text-center mt-4">
       <!-- Button to go back to the posts list -->
-      <a routerLink="/posts" class="btn btn-primary">Back</a>
+      <a routerLink="/posts" class="btn btn-primary me-2">Back</a>
+
+      <!-- Edit button to activate edit mode -->
+      <button *ngIf="!isEditing" class="btn btn-warning" (click)="editPost()">Edit</button>
+
+      <!-- Save button only visible in edit mode -->
+      <button *ngIf="isEditing" class="btn btn-success" (click)="savePost()">Save</button>
+
     </div>
 
   </div>

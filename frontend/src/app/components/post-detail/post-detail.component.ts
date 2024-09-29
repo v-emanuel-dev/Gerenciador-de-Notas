@@ -10,6 +10,7 @@ import { Post } from '../../models/post.model';
 })
 export class PostDetailComponent implements OnInit {
   post: Post | undefined;
+  isEditing = false; // Controls the edit mode
 
   constructor(
     private postService: PostService,
@@ -24,5 +25,19 @@ export class PostDetailComponent implements OnInit {
     this.postService.getPost(+id).subscribe(post => {
       this.post = post; // Assign the fetched post data to the post variable
     });
+  }
+
+  // Function to toggle edit mode
+  editPost(): void {
+    this.isEditing = !this.isEditing; // Toggle the editing state
+  }
+
+  // Function to save the updated post (you can add an API call here)
+  savePost(): void {
+    if (this.post) {
+      this.postService.updatePost(this.post.id, this.post).subscribe(() => {
+        this.isEditing = false; // Exit edit mode after saving
+      });
+    }
   }
 }

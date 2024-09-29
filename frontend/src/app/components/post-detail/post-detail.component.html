@@ -10,6 +10,7 @@
   <div class="custom-form shadow-lg p-3 bg-light p-4 rounded shadow-sm border border-2 border-light">
 
     <!-- Display the title of the post centered -->
+    <!-- Show a truncated title with ellipsis if it's too long -->
     <h3 class="text-center mb-3">{{ post.title | slice:0:40 }}<span *ngIf="post.title.length > 40">...</span></h3>
 
     <!-- Form group for displaying the content -->

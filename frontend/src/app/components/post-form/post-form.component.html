@@ -1,17 +1,5 @@
 <div class="container mt-4">
 
-  <!-- Success Message -->
-  <div *ngIf="successMessage" class="alert alert-info alert-dismissible fade show text-center" role="alert">
-    {{ successMessage }} <!-- Displays the success message when a note is created or updated -->
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the success message -->
-  </div>
-
-  <!-- Error Message -->
-  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-    {{ errorMessage }} <!-- Displays the error message if there is an issue -->
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the error message -->
-  </div>
-
   <!-- Center the note icon -->
   <div class="text-center">
     <!-- Display the note icon with a size of 88 px -->
@@ -36,4 +24,17 @@
       <a routerLink="/posts" class="btn btn-danger px-4 py-2">Cancel</a> <!-- Button to cancel and go back to the posts list -->
     </div>
   </form>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-info alert-dismissible fade show text-center mt-5" role="alert">
+    {{ successMessage }} <!-- Displays the success message when a note is created or updated -->
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the success message -->
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show text-center mt-5" role="alert">
+    {{ errorMessage }} <!-- Displays the error message if there is an issue -->
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!-- Button to close the error message -->
+  </div>
+
 </div>

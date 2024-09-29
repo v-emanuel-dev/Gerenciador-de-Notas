@@ -42,7 +42,7 @@ export class PostFormComponent implements OnInit {
         this.showSuccessMessage('Post updated successfully!'); // Show success message for update
         setTimeout(() => {
           this.router.navigate(['/posts']); // Navigate to posts list after 1 second
-        }, 2000);
+        }, 1000);
       });
     } else {
       // If no ID, create a new post
@@ -50,7 +50,7 @@ export class PostFormComponent implements OnInit {
         this.showSuccessMessage('Post created successfully!'); // Show success message for creation
         setTimeout(() => {
           this.router.navigate(['/posts']); // Navigate to posts list after 1 second
-        }, 2000);
+        }, 1000);
       });
     }
   }
@@ -60,7 +60,7 @@ export class PostFormComponent implements OnInit {
     this.errorMessage = null; // Clear error message when showing success
     setTimeout(() => {
       this.successMessage = null; // Clear the success message after 3 seconds
-    }, 2000);
+    }, 1800);
   }
 
   showErrorMessage(message: string): void {
@@ -68,6 +68,6 @@ export class PostFormComponent implements OnInit {
     this.successMessage = null; // Clear success message when showing error
     setTimeout(() => {
       this.errorMessage = null; // Clear the error message after 3 seconds
-    }, 3000);
+    }, 1800);
   }
 }

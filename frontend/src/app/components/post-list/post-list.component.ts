@@ -79,7 +79,7 @@ export class PostListComponent implements OnInit {
     this.successMessage = message; // Set the success message
     setTimeout(() => {
       this.successMessage = ''; // Clear the message after 1 second
-    }, 1500);
+    }, 1800);
   }
 
   // Method to filter posts based on the search term

@@ -19,20 +19,23 @@
       <!-- Textarea to show the post content, read-only to prevent editing -->
       <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control lead" rows="5"
         [readonly]="!isEditing">
-    </textarea>
+      </textarea>
     </div>
 
-    <!-- Center the "Back" and "Edit" buttons -->
-    <div class="text-center mt-4">
-      <!-- Button to go back to the posts list -->
-      <a routerLink="/posts" class="btn btn-primary me-2">Back</a>
+    <!-- Container para os botões -->
+  <div class="d-flex justify-content-between mt-4">
+    <!-- Botões Edit e Save à esquerda -->
+    <div>
+      <!-- Botão Edit, visível quando não está no modo de edição -->
+      <button *ngIf="!isEditing" class="btn btn-warning me-2" (click)="editPost()">Edit</button>
 
-      <!-- Edit button to activate edit mode -->
-      <button *ngIf="!isEditing" class="btn btn-warning" (click)="editPost()">Edit</button>
-
-      <!-- Save button only visible in edit mode -->
+      <!-- Botão Save, visível quando está no modo de edição -->
       <button *ngIf="isEditing" class="btn btn-success" (click)="savePost()">Save</button>
+    </div>
 
+    <!-- Botão Back à direita -->
+    <div>
+      <a routerLink="/posts" class="btn btn-primary">Back</a>
     </div>
 
   </div>

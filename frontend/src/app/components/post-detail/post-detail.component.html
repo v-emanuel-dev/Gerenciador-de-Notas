@@ -1,22 +1,25 @@
 <!-- Center the note icon -->
 <div class="text-center">
-  <!-- Display the note icon with a size of 88 px -->
   <i class="fa-regular fa-note-sticky"></i>
 </div>
 
 <!-- Show this container only if the post data is available -->
 <div class="container mt-4" *ngIf="post">
-  <!-- Custom form container with shadow and padding for better aesthetics -->
   <div class="custom-form shadow-lg p-3 bg-light p-4 rounded shadow-sm border border-2 border-light">
 
-    <!-- Display the title of the post centered -->
-    <!-- Show a truncated title with ellipsis if it's too long -->
-    <h3 class="text-center mb-3">{{ post.title | slice:0:40 }}<span *ngIf="post.title.length > 40">...</span></h3>
+    <!-- Display the title of the post with a conditional input -->
+    <h3 class="text-center mb-3">
+      <!-- When not in edit mode, show the title normally -->
+      <span *ngIf="!isEditing">{{ post.title | slice:0:40 }}<span *ngIf="post.title.length > 40">...</span></span>
+
+      <!-- When in edit mode, show an input field to edit the title -->
+      <input *ngIf="isEditing" [(ngModel)]="post.title" name="title" class="form-control text-center" />
+    </h3>
 
     <!-- Form group for displaying the content -->
     <div class="form-group mb-4">
       <label for="content" class="form-label">Content</label>
-      <!-- Textarea to show the post content, read-only to prevent editing -->
+      <!-- Textarea to show the post content, editable only in edit mode -->
       <textarea id="content" [(ngModel)]="post.content" name="content" class="form-control lead" rows="5"
         [readonly]="!isEditing">
       </textarea>
@@ -24,7 +27,7 @@
 
     <!-- Container for buttons -->
     <div class="d-flex justify-content-between mt-4">
-       <!-- Back button on the left -->
+      <!-- Back button on the left -->
       <div>
         <a routerLink="/posts" class="btn btn-primary me-2">Back</a>
       </div>
@@ -36,7 +39,6 @@
         <!-- Save button, visible when in edit mode -->
         <button *ngIf="isEditing" class="btn btn-success" (click)="savePost()">Save</button>
       </div>
-
     </div>
   </div>
 </div>

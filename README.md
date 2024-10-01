@@ -1,3 +1,5 @@
+![Notes App Screenshot](https://github.com/v-emanuel-dev/notes-app/blob/main/frontend/src/assets/img/notes-screenshot.png)
+
 # Aplicativo de Notas
 
 Um aplicativo simples para criar, visualizar, editar e excluir notas. Este projeto foi desenvolvido com Angular, Node.js e MySQL.
